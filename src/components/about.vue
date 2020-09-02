@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrap">
     <h3>欢迎你的到来</h3>
     <div class="container" style="overflow:auto">
       <i class="el-icon-back close" style="font-size:50px" @click="close()"></i>
@@ -36,7 +36,10 @@
           <li>tel:18804625620</li>
           <li>
             github:
-            <a href="https://github.com/Aliuyanfeng" target="_blank">https://github.com/Aliuyanfeng</a>
+            <a
+              href="https://github.com/Aliuyanfeng"
+              target="_blank"
+            >https://github.com/Aliuyanfeng</a>
           </li>
         </ul>
       </div>
@@ -66,8 +69,10 @@ export default {
   height: 750px;
   margin: 0 auto;
   padding: 50px;
+  background: url("../assets/images/lz2.jpg");
+  background-size: 100%;
   // height: 1000px;
-  border: 1px solid #ffffff;
+  // border: 1px solid #ffffff;
   .close {
     position: absolute;
     top: 10px;

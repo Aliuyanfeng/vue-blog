@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="wrap">
     <div class="container">
       <div class="avatar">
         <a href="#">
@@ -10,14 +10,12 @@
         <hr />
         <div id="self-introduction">你好，陌生人，我是Aliu，一名喜欢美食的程序员，很高兴认识你！</div>
       </div>
-
       <div class="nav">
         <el-row :gutter="30" type="flex" justify="center">
           <el-col :xs="1" :sm="6" :md="4" :lg="3" :xl="2">
-            <router-link to="/">
+            <router-link to="/home">
               <div class="grid-content bg-purple animate__animated animate__bounceInDown">首页</div>
             </router-link>
-
             <!-- <el-button @click="drawer = true" type="primary" style="margin-left: 16px;">点我打开</el-button> -->
           </el-col>
           <el-col :xs="1" :sm="6" :md="8" :lg="9" :xl="4">
@@ -41,13 +39,13 @@
       <!-- <router-view></router-view> -->
     </div>
     <transition name="el-fade-in-linear">
-      <router-view tag="div" class="view" v-show="flag"></router-view>
+      <router-view tag="div" class="view" v-show="flag" name="front"></router-view>
     </transition>
-   <el-footer>
-     @Aliuyanfeng 喜欢喝水蜜桃味的饮料
-     黑Cxxxxxx
-
-   </el-footer>
+    <el-footer>
+      @Aliuyanfeng 喜欢喝水蜜桃味的饮料
+      黑Cxxxxxx
+      <p id="showdays">本站以运行{{total}}天</p>
+    </el-footer>
   </div>
 </template>
 
@@ -58,14 +56,22 @@ export default {
       drawer: false,
       direction: "rtl",
       flag: true,
+      total: "",
     };
   },
   mounted() {
     this.type();
   },
+  created() {
+    this.showdays();
+  },
   methods: {
-    show() {
-      console.log("isok");
+    showdays() {
+      const birthday = new Date("08/25/2020");
+      const now = new Date();
+      const run = now.getTime() - birthday.getTime();
+      const total = Math.floor(run / (60 * 60 * 24 * 1000));
+      this.total = total;
     },
     type() {
       var index = 0;
@@ -78,37 +84,28 @@ export default {
       }
       setInterval(type, 200);
     },
-    handleClose(done) {
-      this.$confirm("确认关闭？")
-        .then((_) => {
-          done();
-        })
-        .catch((_) => {});
-    },
   },
 };
 </script>
 
 <style lang="less" scoped >
 .view {
-  background-color: rgba(000, 000, 000, 0.8);
+  background-color: rgba(000, 000, 000, 1);
+  border-radius: 10px;
+  
 }
-#app {
-  // z-index: -1;
+
+#wrap {
   width: 100%;
-  // height: 100%;
+  // height: 2000px;
+  height: 100%;
+  position: absolute;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   text-align: center;
   color: #fff;
-  // position: absolute;
-  // border: 1px solid #333;
-  // width: 1560px;
-  position: absolute;
-  background: url("./assets/images/lz2.jpg");
+  // border: 1px solid red;
+  background: url("./assets/images/lz3.jpg");
   background-size: 100% 100%;
-  @media only screen and (max-width: 1024px) {
-    width: 100%;
-  }
   .container {
     // position: absolute;
     // top: 50%;
@@ -166,6 +163,12 @@ export default {
       line-height: 50px;
       height: 50px;
     }
+  }
+  .el-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 }
 .el-row {

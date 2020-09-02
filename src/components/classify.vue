@@ -50,7 +50,8 @@ export default {
 </script>
 <style lang="less" scoped>
 .container{
-  border: 1px solid #ffffff;
+  // border: 1px solid #ffffff;
+  background: url('../assets/images/lz2.jpg');
   width: 1280px;
   height: 500px;
   margin: 0 auto;

@@ -3,20 +3,29 @@ import Router from 'vue-router'
 import Classify from '../components/classify.vue'
 import Pigeonhole from '../components/pigeonhole.vue'
 import About from '../components/about.vue'
+import Home from '../components/home.vue'
 Vue.use(Router)
 
 export default new Router({
   routes: [{
-    path:'/',
-    component:About
+    path: '/home',
+    components: {
+      front: Home
+    }
   }, {
     path: '/classify',
-    component: Classify
+    components: {
+      front: Classify
+    }
   }, {
     path: '/pigeonhole',
-    component: Pigeonhole
+    components: {
+      front: Pigeonhole
+    }
   }, {
     path: '/about',
-    component: About
+    components: {
+      front: About
+    }
   }]
 })
