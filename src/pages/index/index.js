@@ -1,14 +1,14 @@
 
-import './globalConfig.js'
-
+import '../../globalConfig.js'
+import '../../filter.js'
 import Vue from 'vue'
 import App from './App.vue'
 //配置路由
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
-import router from './router/router.js'
+import router from '../../router/router.js'
 //store
-import store from './store.js'
+import store from '../../store.js'
 
 
 /* eslint-disable no-new */

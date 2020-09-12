@@ -8,10 +8,10 @@
         <el-aside width="200px">
           <Admin style="height:100%"></Admin>
         </el-aside>
-        
+
         <el-container>
           <el-main>
-              <router-view></router-view>
+            <router-view name="admin" v-if="isRouterAlive"></router-view>
           </el-main>
           <el-footer>
             @Aliuyanfeng 喜欢喝水蜜桃味的饮料
@@ -20,19 +20,33 @@
         </el-container>
       </el-container>
     </el-container>
-    
   </div>
 </template>
 <script>
-import Admin from "./components/admin/aside.vue";
+import Admin from "../../components/admin/aside.vue";
 export default {
+  // name: "Admin",
+  provide() {
+    return {
+      reload: this.reload,
+    };
+  },
   data() {
     return {
       msg: "这是后台管理",
+      isRouterAlive: true,
     };
   },
   components: {
     Admin,
+  },
+  methods: {
+    reload() {
+      this.isRouterAlive = false;
+      this.$nextTick(function () {
+        this.isRouterAlive = true;
+      });
+    },
   },
 };
 </script>
@@ -51,8 +65,8 @@ export default {
     color: #333;
     text-align: center;
     line-height: 60px;
-    h1{
-        line-height: 1em;
+    h1 {
+      line-height: 1em;
     }
   }
 

@@ -65,12 +65,11 @@ export default {
 .container {
   // width: 500px;
   position: relative;
-  width: 1280px;
+  width: 80%;
   height: 750px;
   margin: 0 auto;
-  padding: 50px;
   background: url("../assets/images/lz2.jpg");
-  background-size: 100%;
+  background-size: cover;
   // height: 1000px;
   // border: 1px solid #ffffff;
   .close {

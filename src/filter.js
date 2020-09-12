@@ -1,7 +1,8 @@
 import Vue from 'vue'
 
-import Moment from 'moment'
+import moment from 'moment'
 
 Vue.filter('dateFormat', function (date) {
-  return Moment(date).format('YYYY-MM-DD HH:mm:ss')
+  return moment(date).format('YYYY-MM-DD HH:mm:ss')
 })
+
